@@ -1,1 +1,613 @@
-test
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1122 초대장</title>
+    <meta property="og:image" content="https://bemyself333-sketch.github.io/invitation/images/thumbnail.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            /* 주황색 계열로 변경된 색상 팔레트 */
+            --primary-color: #ff8c42;   /* 메인 주황색 */
+            --secondary-color: #ffb085; /* 서브 살구색 */
+            --accent-color: #ffca28;    /* 포인트 옐로우오렌지 */
+            
+            --text-dark: #333333;
+            --text-medium: #555555;
+            --text-light: #777777;
+            
+            --bg-light: #fff5eb;        /* 아주 연한 살구색 배경 */
+            --bg-white: #ffffff;
+            --border-light: #ffe0d1;    /* 연한 주황빛 테두리 */
+            
+            --shadow-subtle: rgba(0,0,0,0.08);
+            --shadow-medium: rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            /* 배경 그라데이션도 따뜻한 톤으로 변경 */
+            background: linear-gradient(135deg, var(--bg-light) 0%, #fffbf0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .invitation-container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--bg-white);
+            border-radius: 28px;
+            box-shadow: 0 25px 80px var(--shadow-medium);
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 70px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+            50% { transform: translate(-10%, -10%) scale(1.1); opacity: 0.8; }
+        }
+
+        .header-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 1;
+            animation: bounceIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 22px;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        
+        .section-title i {
+            font-size: 28px;
+            color: var(--secondary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #fefeff 0%, #f9fbfd 100%);
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 25px var(--shadow-subtle);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .info-text strong {
+            display: block;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .info-text span {
+            font-size: 17px;
+            color: var(--text-medium);
+            font-weight: 400;
+        }
+        
+        .map-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .map-button {
+            flex: 1;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .kakao-btn {
+            background: #FEE500;
+            color: #3C1E1E;
+        }
+        
+        .kakao-btn:hover {
+            background: #FDD800;
+        }
+        
+        .naver-btn {
+            background: #03C75A;
+            color: white;
+        }
+        
+        .naver-btn:hover {
+            background: #02B350;
+        }
+        
+        .tmap-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .tmap-btn:hover {
+            background: #ee5a52;
+        }
+        
+        .directions-list {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 25px var(--shadow-subtle);
+        }
+        
+        .direction-item {
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .direction-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .direction-label {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 19px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .direction-label i {
+            color: var(--accent-color);
+            font-size: 22px;
+        }
+        
+        .direction-text {
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-size: 17px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .direction-image-wrapper {
+            width: 100%;
+            height: auto;
+            background: #e9ecef;
+            border-radius: 14px;
+            display: block;
+            overflow: hidden;
+            border: 2px solid var(--border-light);
+            box-shadow: 0 5px 15px var(--shadow-subtle);
+        }
+
+        .direction-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .notice {
+            background: linear-gradient(135deg, #fffaf0 0%, #fff6e6 100%);
+            border-left: 6px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 18px;
+            color: #8b5a00;
+            box-shadow: 0 8px 25px rgba(255, 184, 77, 0.1);
+        }
+        
+        .notice-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 20px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cc8400;
+        }
+
+        .notice-title i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+        
+        .notice-text {
+            line-height: 1.8;
+            font-size: 17px;
+            font-weight: 400;
+            color: #7a4f00;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #f8f9fb 0%, #f5f7f9 100%);
+            padding: 35px 40px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .invitation-container {
+                border-radius: 20px;
+            }
+
+            .header {
+                padding: 50px 25px;
+            }
+
+            .header-icon {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+            
+            .header h1 {
+                font-size: 36px;
+            }
+            
+            .header .subtitle {
+                font-size: 18px;
+            }
+            
+            .content {
+                padding: 40px 25px;
+            }
+            
+            .section {
+                margin-bottom: 40px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .section-title i {
+                font-size: 24px;
+            }
+
+            .info-box {
+                padding: 20px;
+            }
+
+            .info-text strong {
+                font-size: 17px;
+            }
+
+            .info-text span {
+                font-size: 15px;
+            }
+            
+            .map-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .map-button {
+                width: 100%;
+                padding: 15px 18px;
+                font-size: 15px;
+            }
+
+            .directions-list {
+                padding: 25px;
+            }
+
+            .direction-item {
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+            }
+            
+            .direction-label {
+                font-size: 18px;
+            }
+            
+            .direction-text {
+                font-size: 16px;
+            }
+
+            .direction-image-wrapper {
+                border-radius: 12px;
+            }
+            
+            .notice {
+                padding: 25px;
+            }
+
+            .notice-title {
+                font-size: 18px;
+            }
+
+            .notice-text {
+                font-size: 16px;
+            }
+            
+            .footer {
+                padding: 30px 25px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 30px;
+            }
+            .header-icon {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .header .subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .info-icon {
+                font-size: 20px;
+            }
+
+            .info-text strong {
+                font-size: 16px;
+            }
+            .info-text span {
+                font-size: 14px;
+            }
+
+            .map-button {
+                font-size: 14px;
+                padding: 14px 16px;
+            }
+
+            .direction-label {
+                font-size: 17px;
+            }
+
+            .direction-text {
+                font-size: 15px;
+            }
+
+            .notice-title {
+                font-size: 17px;
+            }
+
+            .notice-text {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <div class="header">
+            <span class="header-icon">✨✨✨✨✨</span>
+            <h1>소중한 분들을 위한 초대장</h1>
+            <!-- <p class="subtitle">(부제 - 26년생 부모되기)</p> -->
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title"><i class="far fa-calendar-alt"></i>일시</div>
+                <div class="info-box">
+                    <div class="info-item">
+                        <i class="fas fa-clock info-icon"></i>
+                        <div class="info-text">
+                            <strong>날짜 & 시간</strong>
+                            <span>2025년 11월 22일 (토) 오후 12시</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title"><i class="fas fa-map-marker-alt"></i>장소</div>
+                <div class="info-box">
+                    <div class="info-item">
+                        <i class="fas fa-home info-icon"></i>
+                        <div class="info-text">
+                            <strong>주소</strong>
+                            <span>행당로82 행당한진타운 107동 2203호</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-buttons">
+                    <a href="https://kko.kakao.com/XqIORAmimh" class="map-button kakao-btn" target="_blank">
+                        <i class="fas fa-map"></i> 카카오맵
+                    </a>
+                    <a href="https://naver.me/FZ8aqeWp" class="map-button naver-btn" target="_blank">
+                        <i class="fas fa-map-marked-alt"></i> 네이버지도
+                    </a>
+                    <a href="https://tmap.life/ab54c390" class="map-button tmap-btn" target="_blank">
+                        <i class="fas fa-car"></i> Tmap
+                    </a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title"><i class="fas fa-route"></i>오시는 길 안내</div>
+                <div class="directions-list">
+                    <div class="direction-item">
+                        <div class="direction-label"><i class="fas fa-subway"></i>대중교통 이용시</div>
+                        <div class="direction-text">
+                            1. 5호선 행당역 하차 후 4번 출구로 나오기<br>
+                            2. 단지 내 중앙 엘리베이터 탑승 후 2층에 내리기<br>
+                            3. 107동으로 걸어오기
+                        </div>
+                        <div class="direction-image-wrapper">
+                            <img src="images/subway.PNG" alt="대중교통 오시는 길">
+                        </div>
+                    </div>
+                    <div class="direction-item">
+                        <div class="direction-label"><i class="fas fa-car-side"></i>자가용 이용시</div>
+                        <div class="direction-text">
+                            107동 앞 지상 또는 지하주차장에 주차하기<br>
+                            (지하주차장은 진입 후 왼쪽이 107동 방향인데 입구를 찾기 어려우니 전화주세요!)
+                        </div>
+                        <div class="direction-image-wrapper">
+                            <img src="images/parking.PNG" alt="자가용 주차 안내">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="notice">
+                    <div class="notice-title"><i class="fas fa-info-circle"></i>당부 말씀</div>
+                    <div class="notice-text">
+                        - 차 가져오시면 주차 등록을 위해 차량 번호를 미리 알려주세요!<br>
+                        - 알러지/식단으로 피해야 하는 음식이 있다면 알려주세요!<br>
+                        - 미니멀리즘 실천을 위해 몸만 와주세요. 귀한 시간 내어 오시는 것만으로도 큰 선물입니다!
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            소중한 분들을 위한 초대장 &copy; All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>
