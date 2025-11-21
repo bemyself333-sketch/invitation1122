@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333; /* 캡처하기 좋게 바깥은 어둡게 처리 */
+        }
+
+        .thumbnail-container {
+            /* 카카오톡/OG 태그 표준 썸네일 비율 (1.91:1) */
+            width: 1200px;
+            height: 630px;
+            
+            /* 초대장과 동일한 주황색 그라데이션 배경 */
+            background: linear-gradient(135deg, #ff8c42 0%, #ffb085 100%);
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* 배경의 은은한 빛 효과 (초대장 헤더와 통일감) */
+        .bg-effect {
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+        }
+
+        /* 왕관 이모지 스타일 */
+        .emoji {
+            font-size: 280px; /* 크기 강조 */
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2)); /* 입체감 */
+            z-index: 10;
+            margin-bottom: 20px;
+            /* 살짝 떠있는 듯한 느낌 */
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 텍스트 스타일 (필요 없다면 지우셔도 됩니다) */
+        .text {
+            font-family: 'Playfair Display', 'Noto Sans KR', serif;
+            color: white;
+            font-size: 70px;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 10;
+            letter-spacing: -1px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <div class="bg-effect"></div>
+        <div class="emoji">👑</div>
+        <!-- <div class="text">초대장</div> -->
+    </div>
+</body>
+</html>
